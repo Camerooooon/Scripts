@@ -1,0 +1,6 @@
+if [[ $(systemctl is-active tor) == "active" ]]
+then
+	echo " Active"
+else
+	echo " Inactive"
+fi
