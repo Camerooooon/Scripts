@@ -1,0 +1,28 @@
+# I no longer use this script. Please see https://github.com/Camerooooon/nightscout-grabber
+
+A=$(curl -s -X GET "https://[removed]/api/v1/times/2/.%2A?count=1?token=[removed]" -H  "accept: application/json" -H "api-secret:   [removed]")
+# A=$(cat example_glucose)
+gl=$(echo "$A" | jq ".[0].sgv")
+direction=$(echo "$A" | jq ".[0].direction" | sed 's/"//g')
+
+
+if [ $gl -lt 70 ] ; then
+	danger=""
+fi
+
+#if [ $direction -gt 50 ] ; then
+#   :
+#   # do something
+#fi
+
+case $direction in 
+	DoubleUp) symbol="" ;;
+	SingleUp) symbol="" ;;
+	FortyFiveUp) symbol="" ;;
+	Flat) symbol="" ;;
+	FortyFiveDown) symbol="" ;;
+	SingleDown) symbol="" ;;
+	DoubleDown) symbol="" ;;
+esac
+
+echo $gl $symbol $danger
