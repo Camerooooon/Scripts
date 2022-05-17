@@ -1,0 +1,2 @@
+nohup ssh -D9050 proxy_server &
+http_proxy=socks5://127.0.0.1:9050 https_proxy=socks5://127.0.0.1:9050 /opt/discord/Discord --proxy-server="socks5://127.0.0.1:9050"
